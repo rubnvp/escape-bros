@@ -6,12 +6,20 @@
     <title>Escape Bros</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1 tabindex="0">
-        Bienvenido a Escape Bros! :D
-    </h1>
-
+<body> 
     <div id="app">
+        <h1 tabindex="0">
+            Bienvenido a Escape Bros!
+        </h1>
+        <div class="notification-center">
+            <div>Notificaciones:</div>
+            <span aria-live="polite">
+                {{ notification }}
+            </span>
+        </div>
+        <!-- <h4>
+            Tiempo restante: {{ timeLeft }}
+        </h4> -->
         <!-- Inventory -->
         <div class="inventory-list" tabindex="0">
             Inventario:
@@ -21,25 +29,40 @@
                 </li>
             </ul>
         </div>
-        <!-- Key -->
-        <details :class="{invisible: isKeyAvailable}">
+        <!-- Safe box -->
+        <details class="actionable-item">
             <summary>
-                <img src="images/key.png" alt="llave" class="key-image">
+                <img v-if="!isSafeBoxOpen" src="images/safe-box-closed.png" alt="caja fuerte cerrada" height="200">
+                <img v-else src="images/safe-box-opened.png" alt="caja fuerte abierta" height="200">
+            </summary>
+            <form v-if="!isSafeBoxOpen" @submit.prevent="trySafeBoxCombination">
+                <label>
+                    Combinación
+                    <input v-model="safeBoxCombination" type="number" style="width: 50px;"/>
+                </label>
+                <button>Probar</button>
+            </form>
+        </details>
+        <!-- Key -->
+        <details v-if="isSafeBoxOpen && !isKeyInInventory" class="actionable-item">
+            <summary>
+                <img src="images/key.png" alt="llave" height="100">
             </summary>
             <button @click="keyLook" aria-label="Mirar llave">Mirar</button>
             <button @click="keyPick" aria-label="Coger llave">Coger</button>
         </details>
-        <button>button 1</button>
-        <button>button 2</button>
-        <button>button 3</button>
         <!-- Door -->
-        <details class="door-details">
+        <details class="actionable-item">
             <summary>
-                <img src="images/door.jpg" alt="puerta" class="door-image">
+                <img src="images/door.jpg" alt="puerta" height="400">
             </summary>
             <button @click="doorLook" aria-label="Mirar puerta">Mirar</button>
             <button @click="doorOpen" aria-label="Abrir puerta">Abrir</button>
         </details>
+        <!-- TV -->
+        <div class="television">
+            <iframe class="tv-screen" width="200" height="160" src="https://www.youtube.com/embed/2yJBnxt94C0?si=4Tq_LqLbVAh4o3HL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3.3.7/dist/vue.global.js"></script>

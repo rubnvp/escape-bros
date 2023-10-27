@@ -5,33 +5,68 @@ const KEY_ITEM = {
 
 const app = Vue.createApp({
   data: () => ({
+    // timeLeft: 60 * 5, // 5 minutes
+    notification: '',
+    notificationId: 0,
     inventoryItems: [],
+    safeBoxCombination: '',
+    isSafeBoxOpen: false,
   }),
   methods: {
+    notify(text) {
+      this.notification = text;
+      clearTimeout(this.notificationId);
+      this.notificationId = setTimeout(() => this.notification = '', 5000);
+    },
+    trySafeBoxCombination() {
+      if (this.safeBoxCombination === 1234) {
+        this.isSafeBoxOpen = true;
+        this.notify("¡Enhorabuena, has abierto la caja fuerte!");
+      }
+      else {
+        this.notify("Vaya, parece que la combinación es incorrecta ☹️");
+      }
+    },
     keyLook() {
-      window.alert("Es una llave, parece que es de una puerta...");
+      this.notify("Es una llave, parece que es de una puerta...");
     },
     keyPick() {
-      window.alert("Has recogido la llave");
+      this.notify("Has recogido la llave");
       this.inventoryItems.push(KEY_ITEM);
     },
     doorLook() {
-      window.alert("Es una puerta con un candado, parece que está cerrrada...");
+      this.notify("Es una puerta con un candado, parece que está cerrrada...");
     },
     doorOpen() {
-      if (this.isKeyAvailable) {
-        window.alert("Has abierto la puerta, ¡enhorabuena!");
+      if (this.isKeyInInventory) {
+        if (window.confirm("¿Quieres usar la llave?")) {
+          this.notify("Has abierto la puerta, ¡enhorabuena! 🎉");
+          return;
+        }
       }
-      else {
-        window.alert("Vaya, parece que está cerrada ☹️");
-      }
+      this.notify("Vaya, parece que está cerrada ☹️");
+    },
+    speech(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'es-ES';
+      window.speechSynthesis.speak(utterance);
     }
   },
   computed: {
-    isKeyAvailable() {
+    isKeyInInventory() {
       return this.inventoryItems.includes(KEY_ITEM);
     }
-  }
+  },
+  // mounted() {
+  //   setInterval(() => {
+  //     if (this.timeLeft % 10 === 0) this.speech(`Quedan ${this.timeLeft} segundos`);
+  //     else if (this.timeLeft === 0) {
+  //       alert("¡Se ha acabado el tiempo! Has perdido ☹️");
+  //       location.reload();
+  //     }
+  //     this.timeLeft--;
+  //   }, 1000);
+  // }
 });
 
 app.mount("#app");

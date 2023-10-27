@@ -1,18 +1,16 @@
-details {
-    display: inline-block;
-    text-align: center;
-}
-
-summary img {
-    cursor: pointer;
-}
-
-summary::marker {
-    content: "";
-}
-
 .invisible {
     visibility: hidden
+}
+
+.notification-center {
+    border: 1px solid black;
+    position: absolute;
+    min-width: 400px;
+    min-height: 100px;
+    bottom: 0;
+    margin-bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .inventory-list {
@@ -23,10 +21,38 @@ summary::marker {
     margin-right: 10px;
 }
 
-.key-image {
-    height: 100px;
+.actionable-item {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 5px;
+    padding: 5px 10px;
 }
 
-.door-image {
-    height: 400px;
+.actionable-item:hover {
+    outline: 1px solid #ccc;
+}
+
+.actionable-item summary {
+    cursor: pointer;
+}
+
+.actionable-item summary::marker {
+    content: "";
+}
+
+.television {
+    display: inline-block;
+    background-image: url("/images/television.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+    position: relative;
+}
+
+.tv-screen {
+    position: absolute;
+    top: 95px;
+    left: 30px;
 }
