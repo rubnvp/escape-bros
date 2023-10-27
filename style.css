@@ -1,0 +1,19 @@
+.button-image {
+    background-color: transparent;
+    border: none;
+}
+
+.door-details {
+    display: inline-block;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.door-details summary::marker {
+    content: "";
+}
+
+.door-image {
+    height: 400px;
+    cursor: pointer;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Bros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 tabindex="0">
+        Bienvenido a Escape Bros! :D
+    </h1>
+
+    <div id="app">
+        <button>button 1</button>
+        <button>button 2</button>
+        <button>button 3</button>
+        <details class="door-details">
+            <summary>
+                <img src="puerta.jpg" alt="puerta" class="door-image">
+            </summary>
+            <button @click="lookDoor">Mirar</button>
+            <button @click="interactDoor">Interactuar</button>
+        </details>
+        <!-- <button @click="doorClick" class="button-image">
+            <img src="puerta.jpg" alt="puerta" class="door-image">
+        </button> -->
+    </div>
+
+    <script src="https://unpkg.com/vue@3.3.7/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
