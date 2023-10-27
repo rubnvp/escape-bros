@@ -11,12 +11,7 @@
         <h1 tabindex="0">
             Bienvenido a Escape Bros!
         </h1>
-        <div class="notification-center">
-            <div>Notificaciones:</div>
-            <span aria-live="polite">
-                {{ notification }}
-            </span>
-        </div>
+        <!-- Time down -->
         <!-- <h4>
             Tiempo restante: {{ timeLeft }}
         </h4> -->
@@ -71,6 +66,13 @@
             <button @click="pauseTv">Pausar</button>
             <button @click="maximizeTv">Maximizar</button>
         </details>
+        <!-- Notifications -->
+        <div class="notification-center">
+            <div>Notificaciones:</div>
+            <span aria-live="polite">
+                {{ notification }}
+            </span>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3.3.7/dist/vue.global.js"></script>
