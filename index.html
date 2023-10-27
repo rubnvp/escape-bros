@@ -30,29 +30,35 @@
                 <img v-if="!isSafeBoxOpen" src="images/safe-box-closed.png" alt="caja fuerte cerrada" height="200">
                 <img v-else src="images/safe-box-opened.png" alt="caja fuerte abierta" height="200">
             </summary>
-            <form v-if="!isSafeBoxOpen" @submit.prevent="trySafeBoxCombination">
-                <label>
-                    Combinación
-                    <input v-model="safeBoxCombination" type="number" style="width: 50px;"/>
-                </label>
-                <button>Probar</button>
-            </form>
+            <div class="actionable-buttons">
+                <form v-if="!isSafeBoxOpen" @submit.prevent="trySafeBoxCombination">
+                    <label>
+                        Combinación:<br>
+                        <input v-model="safeBoxCombination" type="number" style="width: 50px;"/>
+                    </label>
+                    <button>Probar</button>
+                </form>
+            </div>
         </details>
         <!-- Key -->
         <details v-if="isSafeBoxOpen && !isKeyInInventory" class="actionable-item">
             <summary>
                 <img src="images/key.png" alt="llave" height="100">
             </summary>
-            <button @click="keyLook" aria-label="Mirar llave">Mirar</button>
-            <button @click="keyPick" aria-label="Coger llave">Coger</button>
+            <div class="actionable-buttons">
+                <button @click="keyLook" aria-label="Mirar llave">Mirar</button>
+                <button @click="keyPick" aria-label="Coger llave">Coger</button>
+            </div>
         </details>
         <!-- Door -->
         <details class="actionable-item">
             <summary>
                 <img src="images/door.jpg" alt="puerta" height="400">
             </summary>
-            <button @click="doorLook" aria-label="Mirar puerta">Mirar</button>
-            <button @click="doorOpen" aria-label="Abrir puerta">Abrir</button>
+            <div class="actionable-buttons">
+                <button @click="doorLook" aria-label="Mirar puerta">Mirar</button>
+                <button @click="doorOpen" aria-label="Abrir puerta">Abrir</button>
+            </div>
         </details>
         <!-- TV -->
         <details class="actionable-item">
@@ -62,9 +68,11 @@
                     <div id="player" tabindex="-1" class="tv-screen"></div>
                 </div>
             </summary>
-            <button @click="playTv">Reproducir</button>
-            <button @click="pauseTv">Pausar</button>
-            <button @click="maximizeTv">Maximizar</button>
+            <div class="actionable-buttons">
+                <button @click="playTv">Reproducir</button>
+                <button @click="pauseTv">Pausar</button>
+                <button @click="maximizeTv">Maximizar</button>
+            </div>
         </details>
         <!-- Notifications -->
         <div class="notification-center">
