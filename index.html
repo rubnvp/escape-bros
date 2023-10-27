@@ -60,9 +60,17 @@
             <button @click="doorOpen" aria-label="Abrir puerta">Abrir</button>
         </details>
         <!-- TV -->
-        <div class="television">
-            <iframe class="tv-screen" width="200" height="160" src="https://www.youtube.com/embed/2yJBnxt94C0?si=4Tq_LqLbVAh4o3HL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
+        <details class="actionable-item">
+            <summary>
+                <div class="television" aria-label="television">
+                    <!-- <iframe tabindex="-1" class="tv-screen" width="200" height="160" src="https://www.youtube.com/embed/2yJBnxt94C0?si=4Tq_LqLbVAh4o3HL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+                    <div id="player" tabindex="-1" class="tv-screen"></div>
+                </div>
+            </summary>
+            <button @click="playTv">Reproducir</button>
+            <button @click="pauseTv">Pausar</button>
+            <button @click="maximizeTv">Maximizar</button>
+        </details>
     </div>
 
     <script src="https://unpkg.com/vue@3.3.7/dist/vue.global.js"></script>

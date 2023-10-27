@@ -3,6 +3,22 @@ const KEY_ITEM = {
   name : 'Llave',
 }
 
+let ytPlayer = null;
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('player', {
+    width: '200',
+    height: '160',
+    videoId: '2yJBnxt94C0',
+    playerVars: {
+      'playsinline': 1
+    },
+    // events: {
+    //   'onReady': onPlayerReady,
+    //   'onStateChange': onPlayerStateChange
+    // }
+  });
+}
+
 const app = Vue.createApp({
   data: () => ({
     // timeLeft: 60 * 5, // 5 minutes
@@ -46,6 +62,20 @@ const app = Vue.createApp({
       }
       this.notify("Vaya, parece que está cerrada ☹️");
     },
+    playTv() {
+      ytPlayer?.playVideo();
+    },
+    pauseTv() {
+      ytPlayer?.pauseVideo();
+    },
+    maximizeTv() {
+      // ytPlayer?.playVideo();
+      const iframe = document.querySelector('#player');
+      var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
+      if (requestFullScreen) {
+        requestFullScreen.bind(iframe)();
+      }
+    },
     speech(text) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'es-ES';
@@ -67,6 +97,36 @@ const app = Vue.createApp({
   //     this.timeLeft--;
   //   }, 1000);
   // }
+  mounted() {
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    // var player;
+    
+    // 4. The API will call this function when the video player is ready.
+    // function onPlayerReady(event) {
+    //   event.target.playVideo();
+    // }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    // var done = false;
+    // function onPlayerStateChange(event) {
+    //   if (event.data == YT.PlayerState.PLAYING && !done) {
+    //     setTimeout(stopVideo, 6000);
+    //     done = true;
+    //   }
+    // }
+    // function stopVideo() {
+    //   player.stopVideo();
+    // }
+  }
 });
 
 app.mount("#app");
