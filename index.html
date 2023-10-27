@@ -12,19 +12,34 @@
     </h1>
 
     <div id="app">
+        <!-- Inventory -->
+        <div class="inventory-list" tabindex="0">
+            Inventario:
+            <ul>
+                <li v-for="item in inventoryItems" :key="item.id">
+                    {{ item.name }}
+                </li>
+            </ul>
+        </div>
+        <!-- Key -->
+        <details :class="{invisible: isKeyAvailable}">
+            <summary>
+                <img src="images/key.png" alt="llave" class="key-image">
+            </summary>
+            <button @click="keyLook" aria-label="Mirar llave">Mirar</button>
+            <button @click="keyPick" aria-label="Coger llave">Coger</button>
+        </details>
         <button>button 1</button>
         <button>button 2</button>
         <button>button 3</button>
+        <!-- Door -->
         <details class="door-details">
             <summary>
-                <img src="puerta.jpg" alt="puerta" class="door-image">
+                <img src="images/door.jpg" alt="puerta" class="door-image">
             </summary>
-            <button @click="lookDoor">Mirar</button>
-            <button @click="interactDoor">Interactuar</button>
+            <button @click="doorLook" aria-label="Mirar puerta">Mirar</button>
+            <button @click="doorOpen" aria-label="Abrir puerta">Abrir</button>
         </details>
-        <!-- <button @click="doorClick" class="button-image">
-            <img src="puerta.jpg" alt="puerta" class="door-image">
-        </button> -->
     </div>
 
     <script src="https://unpkg.com/vue@3.3.7/dist/vue.global.js"></script>

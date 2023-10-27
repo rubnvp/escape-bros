@@ -1,19 +1,32 @@
-.button-image {
-    background-color: transparent;
-    border: none;
-}
-
-.door-details {
+details {
     display: inline-block;
-    border: 1px solid #ccc;
     text-align: center;
 }
 
-.door-details summary::marker {
+summary img {
+    cursor: pointer;
+}
+
+summary::marker {
     content: "";
+}
+
+.invisible {
+    visibility: hidden
+}
+
+.inventory-list {
+    position: absolute;
+    right: 0;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.key-image {
+    height: 100px;
 }
 
 .door-image {
     height: 400px;
-    cursor: pointer;
 }
