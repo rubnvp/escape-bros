@@ -30,13 +30,13 @@ button {
     opacity: 1;
 }
 
-
 .switch.reverse {
     transform: rotate(180deg);
     opacity: 0;
 }
 
-.switch.reverse:hover {
+.switch.reverse:hover,
+.switch:focus {
     outline: 1px solid yellow;
     opacity: 1;
 }
