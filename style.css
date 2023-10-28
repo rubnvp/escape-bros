@@ -65,3 +65,7 @@
     left: 30px;
     pointer-events: none;
 }
+
+.tv-screen.maximized {
+    pointer-events: all;
+}

@@ -30,8 +30,8 @@
                 <img v-if="!isSafeBoxOpen" src="images/safe-box-closed.png" alt="caja fuerte cerrada" height="200">
                 <img v-else src="images/safe-box-opened.png" alt="caja fuerte abierta" height="200">
             </summary>
-            <div class="actionable-buttons">
-                <form v-if="!isSafeBoxOpen" @submit.prevent="trySafeBoxCombination">
+            <div v-if="!isSafeBoxOpen" class="actionable-buttons">
+                <form @submit.prevent="trySafeBoxCombination">
                     <label>
                         Combinación:<br>
                         <input v-model="safeBoxCombination" type="number" style="width: 50px;"/>
@@ -53,9 +53,10 @@
         <!-- Door -->
         <details class="actionable-item">
             <summary>
-                <img src="images/door.jpg" alt="puerta" height="400">
+                <img v-if="!isDoorOpen" src="images/door-closed.jpg" alt="puerta cerrada" height="400">
+                <img v-else src="images/door-openened.png" alt="puerta abierta" height="400">
             </summary>
-            <div class="actionable-buttons">
+            <div v-if="!isDoorOpen" class="actionable-buttons">
                 <button @click="doorLook" aria-label="Mirar puerta">Mirar</button>
                 <button @click="doorOpen" aria-label="Abrir puerta">Abrir</button>
             </div>
@@ -71,7 +72,7 @@
             <div class="actionable-buttons">
                 <button @click="playTv">Reproducir</button>
                 <button @click="pauseTv">Pausar</button>
-                <button @click="maximizeTv">Maximizar</button>
+                <button @click="maximizeTv" tabindex="-1">Maximizar</button>
             </div>
         </details>
         <!-- Notifications -->

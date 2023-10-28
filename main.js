@@ -12,6 +12,8 @@ const app = Vue.createApp({
     inventoryItems: [],
     safeBoxCombination: '',
     isSafeBoxOpen: false,
+    isTvMaximized: false,
+    isDoorOpen: false,
     // timeLeft: 60 * 5, // 5 minutes
   }),
   methods: {
@@ -43,6 +45,7 @@ const app = Vue.createApp({
       if (this.isKeyInInventory) {
         if (window.confirm("¿Quieres usar la llave?")) {
           this.notify("Has abierto la puerta, ¡enhorabuena! 🎉");
+          this.isDoorOpen = true;
           return;
         }
       }
@@ -59,13 +62,14 @@ const app = Vue.createApp({
       var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
       if (requestFullScreen) {
         requestFullScreen.bind(iframe)();
+        iframe.classList.add('maximized');
       }
     },
-    speech(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'es-ES';
-      window.speechSynthesis.speak(utterance);
-    }
+    // speech(text) {
+    //   const utterance = new SpeechSynthesisUtterance(text);
+    //   utterance.lang = 'es-ES';
+    //   window.speechSynthesis.speak(utterance);
+    // }
   },
   computed: {
     isKeyInInventory() {
