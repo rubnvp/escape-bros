@@ -24,7 +24,7 @@ const app = Vue.createApp({
         this.notify("Has encendido la luz 💡");
       }
       else {
-        this.notify("Has apagado la luz");
+        this.notify("Has apagado la luz, puedes resolverlo a oscuras si quieres 😉");
       }
     },
     notify(text) {
