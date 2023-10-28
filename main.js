@@ -35,7 +35,7 @@ const app = Vue.createApp({
     trySafeBoxCombination() {
       if (this.safeBoxCombination === 4321) {
         this.isSafeBoxOpen = true;
-        this.notify("¡Enhorabuena, has abierto la caja fuerte!");
+        this.notify("¡Enhorabuena, has abierto la caja fuerte! ha salido una llave afuera");
       }
       else {
         this.notify("Vaya, parece que la combinación es incorrecta ☹️");
