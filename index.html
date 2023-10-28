@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body> 
-    <div id="app">
+    <div id="app" v-cloak>
+        <div v-if="!isSwitchOn" class="light-off"></div>
+        <!-- Switch -->
+        <button class="switch" @click="toggleSwitch" :class="{reverse: !isSwitchOn}">
+            <img v-if="!isSafeBoxOpen" src="images/switch.png" alt="interruptor" height="50" >
+        </button>
         <h1 tabindex="0">
             Bienvenido a Escape Bros!
         </h1>
@@ -23,6 +28,7 @@
                     {{ item.name }}
                 </li>
             </ul>
+            <span v-if="inventoryItems.length === 0">Vacío</span>
         </div>
         <!-- Safe box -->
         <details class="actionable-item">
@@ -70,6 +76,7 @@
                 </div>
             </summary>
             <div class="actionable-buttons">
+                <button @click="seeTv">Mirar</button>
                 <button @click="playTv">Reproducir</button>
                 <button @click="pauseTv">Pausar</button>
                 <button @click="maximizeTv" tabindex="-1">Maximizar</button>

@@ -7,6 +7,7 @@ let ytPlayer = null;
 
 const app = Vue.createApp({
   data: () => ({
+    isSwitchOn: false,
     notification: '',
     notificationId: 0,
     inventoryItems: [],
@@ -17,13 +18,22 @@ const app = Vue.createApp({
     // timeLeft: 60 * 5, // 5 minutes
   }),
   methods: {
+    toggleSwitch() {
+      this.isSwitchOn = !this.isSwitchOn;
+      if (this.isSwitchOn) {
+        this.notify("Has encendido la luz");
+      }
+      else {
+        this.notify("Has apagado la luz");
+      }
+    },
     notify(text) {
       this.notification = text;
       clearTimeout(this.notificationId);
       this.notificationId = setTimeout(() => this.notification = '', 5000);
     },
     trySafeBoxCombination() {
-      if (this.safeBoxCombination === 1234) {
+      if (this.safeBoxCombination === 4321) {
         this.isSafeBoxOpen = true;
         this.notify("¡Enhorabuena, has abierto la caja fuerte!");
       }
@@ -35,7 +45,7 @@ const app = Vue.createApp({
       this.notify("Es una llave, parece que es de una puerta...");
     },
     keyPick() {
-      this.notify("Has recogido la llave");
+      this.notify("Has recogido la llave, se ha añadido al inventario");
       this.inventoryItems.push(KEY_ITEM);
     },
     doorLook() {
@@ -50,6 +60,9 @@ const app = Vue.createApp({
         }
       }
       this.notify("Vaya, parece que está cerrada ☹️");
+    },
+    seeTv() {
+      this.notify("Es una televisión, parece que está invertida... ¿echarán algo interesante?");
     },
     playTv() {
       ytPlayer?.playVideo();
