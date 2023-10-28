@@ -56,6 +56,7 @@ const app = Vue.createApp({
         if (window.confirm("¿Quieres usar la llave?")) {
           this.notify("Has abierto la puerta, ¡pitbull te da la enhorabuena! 🎉");
           this.isDoorOpen = true;
+          this.isSwitchOn = true;
           return;
         }
       }
