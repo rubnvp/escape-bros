@@ -11,7 +11,7 @@
         <div v-if="!isSwitchOn" class="light-off"></div>
         <!-- Switch -->
         <button class="switch" @click="toggleSwitch" :class="{reverse: !isSwitchOn}">
-            <img v-if="!isSafeBoxOpen" src="images/switch.png" alt="interruptor" height="50" >
+            <img src="images/switch.png" alt="interruptor luz" height="50" >
         </button>
         <h1 tabindex="0">
             Bienvenido a Escape Bros!
@@ -34,7 +34,7 @@
         <details class="actionable-item">
             <summary>
                 <img v-if="!isSafeBoxOpen" src="images/safe-box-closed.png" alt="caja fuerte cerrada" height="200">
-                <img v-else src="images/safe-box-opened.png" alt="caja fuerte abierta" height="200">
+                <img v-else src="images/safe-box-opened.png" alt="caja fuerte abierta" height="120">
             </summary>
             <div v-if="!isSafeBoxOpen" class="actionable-buttons">
                 <form @submit.prevent="trySafeBoxCombination">
@@ -49,7 +49,7 @@
         <!-- Key -->
         <details v-if="isSafeBoxOpen && !isKeyInInventory" class="actionable-item">
             <summary>
-                <img src="images/key.png" alt="llave" height="100">
+                <img src="images/key.png" alt="llave" height="50">
             </summary>
             <div class="actionable-buttons">
                 <button @click="keyLook" aria-label="Mirar llave">Mirar</button>
@@ -59,8 +59,8 @@
         <!-- Door -->
         <details class="actionable-item">
             <summary>
-                <img v-if="!isDoorOpen" src="images/door-closed.jpg" alt="puerta cerrada" height="400">
-                <img v-else src="images/door-openened.png" alt="puerta abierta" height="400">
+                <img v-if="!isDoorOpen" src="images/door-closed.png" alt="puerta cerrada" height="400">
+                <img v-else src="images/door-opened.png" alt="puerta abierta, pitbull te da la enhorabuena" height="400">
             </summary>
             <div v-if="!isDoorOpen" class="actionable-buttons">
                 <button @click="doorLook" aria-label="Mirar puerta">Mirar</button>

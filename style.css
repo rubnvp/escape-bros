@@ -38,6 +38,8 @@
     margin-bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 24px;
+    padding: 10px;
 }
 
 .inventory-list {
@@ -81,7 +83,7 @@
     background-image: url("/images/television.png");
     background-size: contain;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 310px;
     width: 300px;
     position: relative;
     transform: rotate(180deg);
@@ -89,8 +91,8 @@
 
 .tv-screen {
     position: absolute;
-    top: 95px;
-    left: 30px;
+    top: 100px;
+    left: 32px;
     pointer-events: none;
 }
 

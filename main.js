@@ -1,13 +1,13 @@
 const KEY_ITEM = {
   id : 'key',
-  name : 'Llave',
+  name : 'Llave 🗝️',
 }
 
 let ytPlayer = null;
 
 const app = Vue.createApp({
   data: () => ({
-    isSwitchOn: false,
+    isSwitchOn: false, // Turn this off
     notification: '',
     notificationId: 0,
     inventoryItems: [],
@@ -21,7 +21,7 @@ const app = Vue.createApp({
     toggleSwitch() {
       this.isSwitchOn = !this.isSwitchOn;
       if (this.isSwitchOn) {
-        this.notify("Has encendido la luz");
+        this.notify("Has encendido la luz 💡");
       }
       else {
         this.notify("Has apagado la luz");
@@ -54,7 +54,7 @@ const app = Vue.createApp({
     doorOpen() {
       if (this.isKeyInInventory) {
         if (window.confirm("¿Quieres usar la llave?")) {
-          this.notify("Has abierto la puerta, ¡enhorabuena! 🎉");
+          this.notify("Has abierto la puerta, ¡pitbull te da la enhorabuena! 🎉");
           this.isDoorOpen = true;
           return;
         }
