@@ -9,6 +9,10 @@
 <body> 
     <div id="app" v-cloak>
         <div v-if="!isSwitchOn" class="light-off"></div>
+        <!-- Switch -->
+        <button class="switch" @click="toggleSwitch" :class="{reverse: !isSwitchOn}">
+            <img src="images/switch.png" alt="interruptor luz" height="50" >
+        </button>
         <h1 tabindex="0">
             Bienvenido a Escape Bros!
         </h1>
@@ -84,10 +88,6 @@
                 {{ notification }}
             </span>
         </div>
-        <!-- Switch -->
-        <button class="switch" @click="toggleSwitch" :class="{reverse: !isSwitchOn}">
-            <img src="images/switch.png" alt="interruptor luz" height="50" >
-        </button>
     </div>
 
     <script src="https://unpkg.com/vue@3.3.7/dist/vue.global.js"></script>

@@ -37,7 +37,6 @@ button {
 
 .switch.reverse:hover,
 .switch:focus {
-    outline: 1px solid yellow;
     opacity: 1;
 }
 
